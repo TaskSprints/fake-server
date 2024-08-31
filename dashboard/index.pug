@@ -1,0 +1,132 @@
+doctype html
+html
+  head
+    title Fake Server
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    // Prism CSS
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css')
+    // Font Awesome for icons
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
+    // Custom styles
+    style.
+      body {
+        background-color: #f8f9fa;
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;  // Ensure full height for the footer
+        padding-top: 80px;  // Space for fixed header
+      }
+      .container {
+        margin-top: 75px;
+        max-width: 800px;
+        flex: 1;  // Allow the container to expand
+      }
+      .api-route {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+      }
+      .api-route:hover {
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px);
+      }
+      .method-label {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+      .GET { background-color: #28a745; }
+      .POST { background-color: #007bff; }
+      .PUT { background-color: #ffc107; }
+      .DELETE { background-color: #dc3545; }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #343a40;
+      }
+      .url-link {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .url-link:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+      pre {
+        background: #f6f8fa;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 0.9rem;
+      }
+      header {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        height : 45px;
+        padding: 10px 0;
+        position: fixed;  // Fix the header at the top
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;  // Ensure it stays on top
+      }
+      header a {
+        color: #28a745;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      header a:hover {
+        text-decoration: underline;
+      }
+      .header-title {
+        font-size: 1.8rem;
+        margin: 0;
+      }
+      .header-subtitle {
+        margin: 5px 0 0;
+        font-size: 1rem;
+      }
+      .btn-custom {
+        background-color: #6c757d;
+        color: white;
+      }
+      .btn-custom:hover {
+        background-color: #5a6268;
+      }
+  body
+    // Header 추가
+    header
+      p.header-subtitle
+        a(href='https://github.com/knu-k', target='_blank') Like me on GitHub. it is made by knu-k
+
+    .container
+      h1.text-center.mb-4 simple-fake-server
+      // routes 배열이 존재하는지 확인하고, 존재하지 않으면 안내 메시지 표시
+      if routes && routes.length > 0
+        each route in routes
+          .api-route
+            h5 Method: 
+              span.method-label(class=route.method.toUpperCase()) #{route.method.toUpperCase()}
+            p URL: 
+              a.url-link(href=route.url, target="_blank") #{route.url}
+            p Status: 
+              strong #{route.responseStatus}
+            p Response: 
+              pre
+                code.language-json(class='language-json') #{JSON.stringify(route.response, null, 2)}
+      else
+        p.text-center No routes available.
+
+    // Prism.js script
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js')
