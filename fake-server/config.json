@@ -1,0 +1,26 @@
+[
+    {
+        "method": "get",
+        "url": "/",
+        "responseStatus": 200,
+        "response": { "b": "b" }
+    },
+    {
+        "method": "get",
+        "url": "/api1",
+        "responseStatus": 400,
+        "response": { "a": "a" }
+    },
+    {
+        "method": "get",
+        "url": "/api2",
+        "responseStatus": 200,
+        "response": { "a": "b" }
+    },
+    {
+        "method": "get",
+        "url": "/api3",
+        "responseStatus": 200,
+        "response": {}
+    }
+]
