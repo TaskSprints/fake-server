@@ -1,4 +1,5 @@
 const { json, urlencoded } = require("express");
+const cors = require("cors");
 const path = require("path");
 /**
  * endpoint 를 자동으로 구성합니다
@@ -49,6 +50,7 @@ const configApp = ({ app, fakeServerConfig }) => {
  * @param {Array} param0.fakeServerConfig - fakeServer 구성요소
  */
 const expressLoader = async ({ app, fakeServerConfig }) => {
+    app.use(cors());
     app.use(json());
     app.use(urlencoded({ extended: false }));
     app.set("view engine", "pug");
