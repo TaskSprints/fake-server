@@ -1,45 +1,78 @@
-# Fake-Server
+# express-fake-server
 
-## 사용법
+![Version](https://img.shields.io/badge/version-0.0.3-brightgreen)
 
-### 1. 패키지 설치
+## 0. 소개
 
-```
-npm i
-or
-npm ci
-```
+해당 cli 유틸 서비스는 보다 간단하게 server 를 만들어서 테스트를 할 수 있도록 최소한의 경량 형태로 프로젝트를 구성하였습니다.
 
-### 2. fake endpoint 구성
+## 1.사용법
+
+### 1-1. 패키지 설치
 
 ```
-./fake-server/config.json
+npm i -g express-fake-server
 ```
 
-에 들어가서 설정한다.
+### 1-2. fake endpoint 구성
 
-> #### `fake-server/config` 에 대한 간단한 설명
->
-> -   `method` 는 요청 시 사용할 메소드이다. (get,post, put, delete 등)
-> -   `url` 은 endpoint 위치를 의미한다.
-> -   `responseStatus`는 응답 상태코드를 의미한다.
-> -   `response` 는 응답 시 받는 데이터이다.
+json 파일로 endpoint 를 구성한다.
 
-### 3. 프로젝트 실행
+### example
+
+```json
+[
+    {
+        "method": "get",
+        "url": "/",
+        "responseStatus": 200,
+        "response": {
+            "b": "b"
+        }
+    },
+    {
+        "method": "get",
+        "url": "/api1",
+        "responseStatus": 400,
+        "response": {
+            "a": "a"
+        }
+    },
+    {
+        "method": "get",
+        "url": "/api2",
+        "responseStatus": 200,
+        "response": {
+            "a": "b"
+        }
+    },
+    {
+        "method": "get",
+        "url": "/api3",
+        "responseStatus": 200,
+        "response": {}
+    }
+]
+```
+
+### 2. 커맨드 실행
+
+#### 2-1. 일반적인 실행
 
 ```
-npm start
+express-server start --load <파일명.json> -p <포트>
 ```
 
 ###
 
-## 대시보드 ( /fake-server/ui )
+## 3. 대시보드 ( localhost:port/fake-server/ui )
 
 ![alt text](./docs/dashboard-image.png)
 
 위와 같이 `fake-api` 에 대한 명세를 간단하게 대시보드화하여 볼 수 있다.
 
-## 사용 기술
+## 4. 사용 기술
 
 -   express.js
 -   pug engine
+-   commander
