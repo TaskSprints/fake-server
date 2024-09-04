@@ -1,9 +1,8 @@
 const http = require("http");
 const createApp = require("./app");
-const port = 8080;
-(async function () {
+module.exports = async function applicationBootStrap(port) {
     const server = http.createServer(await createApp());
     server.listen(port, () => {
         console.log(`fake-server listen [${port}]`);
     });
-})();
+};

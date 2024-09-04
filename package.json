@@ -1,19 +1,33 @@
 {
-    "name": "auction-fake-server",
-    "version": "1.0.0",
+    "name": "express-fake-server",
+    "version": "0.0.3",
+    "description": "A CLI tool to run a fake server.",
     "main": "server.js",
+    "bin": {
+        "fake-server": "cli.js"
+    },
     "scripts": {
-        "start": "nodemon",
+        "start": "nodemon server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": "",
+    "keywords": [
+        "node",
+        "cli",
+        "fake-server",
+        "server",
+        "fake"
+    ],
+    "author": "KNU-K",
+    "license": "MIT",
     "dependencies": {
+        "commander": "^12.1.0",
         "cors": "^2.8.5",
         "express": "^4.19.2",
         "nodemon": "^3.1.4",
         "pug": "^3.0.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TaskSprints/fake-server"
     }
 }
